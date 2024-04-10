@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 # Created by Yanka Deshkovski
 
 def decode(encrypted_password: str):
@@ -23,3 +24,6 @@ def decode(encrypted_password: str):
         string += str(arr[i])
 
     return string
+=======
+
+>>>>>>> f705c87cdf9e3d68a77cadba01ba1d6c391d95a7
