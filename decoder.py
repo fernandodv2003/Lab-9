@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 # Created by Yanka Deshkovski
 
 def decode(encrypted_password: str):
