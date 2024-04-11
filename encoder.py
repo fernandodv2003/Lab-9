@@ -1,5 +1,5 @@
 # By: Fernando Vazquez
-
+from decoder import Decoder
 def encode(password: str):
     arr = {}
     length = len(password)
@@ -46,7 +46,7 @@ def main():
                 print("No password has been stored yet!")
                 print()
             else:
-                new_password = decode(encoded_password)
+                new_password = Decoder.decode(encoded_password)
                 print(f"The encoded password is {encoded_password}, "
                       f"and the original password is {new_password}.")
                 print()
