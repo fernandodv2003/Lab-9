@@ -1,4 +1,6 @@
-<<<<<<< HEAD
+<<<<<<<<< Temporary merge branch 1
+
+=========
 # Created by Yanka Deshkovski
 
 def decode(encrypted_password: str):
@@ -24,3 +26,4 @@ def decode(encrypted_password: str):
         string += str(arr[i])
 
     return string
+>>>>>>>>> Temporary merge branch 2
