@@ -1,15 +1,59 @@
 # By: Fernando Vazquez
 
-def decode(encoded_password):
-    decoded_password = ""
-    for digit in encoded_password:
-        decoded_digit = str((int(digit) + 3) % 10)
-        decoded_password += decoded_digit
-    return decoded_password
+def encode(password: str):
+    arr = {}
+    length = len(password)
+    for i in range(len(password)):
+        arr[i] = int(int(password)/pow(10, length - 1 - i))
+        password = int(password) % pow(10, length - 1 - i)
 
-#Example usage
-encoded_password = "00009962"
-decoded_password = decode(encoded_password)
-print("The encoded password is:", encoded_password)
-print("The decoded password is:", decoded_password)
+    for i in range(len(arr)):
+        arr[i] = arr[i] + 3
+        if arr[i] > 9:
+            arr[i] = arr[i] % 10
+
+    string = ''
+
+    for i in range(len(arr)):
+        string += str(arr[i])
+
+    return string
+
+
+def print_menu():
+    print("Menu")
+    print("-------------")
+    print("1. Encode")
+    print("2. Decode")
+    print("3. Quit")
+    print()
+
+
+def main():
+    encoded_password = ''
+
+    new_password = ''
+    while True:
+        print_menu()
+        selection = int(input("Please enter an option: "))
+        if selection == 1:
+            password = str(input("Please enter your password to encode: "))
+            encoded_password = encode(password)
+            print("Your password has been encoded and stored!")
+            print()
+        elif selection == 2:
+            if encoded_password == '':
+                print("No password has been stored yet!")
+                print()
+            else:
+                new_password = decode(encoded_password)
+                print(f"The encoded password is {encoded_password}, "
+                      f"and the original password is {new_password}.")
+                print()
+        elif selection == 3:
+            break
+
+
+if __name__ == '__main__':
+    main()
 
