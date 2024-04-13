@@ -1,5 +1,4 @@
 # By: Fernando Vazquez
-from decoder import Decoder
 def encode(password: str):
     arr = {}
     length = len(password)
@@ -11,6 +10,31 @@ def encode(password: str):
         arr[i] = arr[i] + 3
         if arr[i] > 9:
             arr[i] = arr[i] % 10
+
+    string = ''
+
+    for i in range(len(arr)):
+        string += str(arr[i])
+
+    return string
+
+
+def decode(encrypted_password: str):
+    arr = {}
+    length = len(encrypted_password)
+    for i in range(len(encrypted_password)):
+        arr[i] = int(int(encrypted_password)/pow(10, length - 1 - i))
+        encrypted_password = int(encrypted_password) % pow(10, length - 1 - i)
+
+    for i in range(len(arr)):
+        arr[i] = arr[i] - 3
+        if arr[i] < 0:
+            if arr[i] == -1:
+                arr[i] = 9
+            elif arr[i] == -2:
+                arr[i] = 8
+            elif arr[i] == -3:
+                arr[i] = 7
 
     string = ''
 
@@ -46,7 +70,7 @@ def main():
                 print("No password has been stored yet!")
                 print()
             else:
-                new_password = Decoder.decode(encoded_password)
+                new_password = decode(encoded_password)
                 print(f"The encoded password is {encoded_password}, "
                       f"and the original password is {new_password}.")
                 print()
